@@ -6,6 +6,7 @@ package botfly;
 
 service GameService {
     rpc GetBotTemplate(GameDetails) returns (BotTemplate) {}
+    rpc SaveMyBot(BotTemplate) returns (SaveStatus) {}
 }
 
 message GameDetails {
@@ -17,4 +18,8 @@ message GameDetails {
 
 message BotTemplate {
     string template = 1;
+}
+
+message SaveStatus {
+    string status = 1;
 }
