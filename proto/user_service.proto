@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "github.com/table-native/Botfly-Service/generated";
+
+package botfly;
+
+service UserService {
+    rpc Login(UserIdentity) returns (Token) {}
+}
+
+message UserIdentity {
+    string emailId = 1;
+}
+
+message Token {
+    string jwt = 1;
+}
