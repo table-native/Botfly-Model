@@ -9,6 +9,7 @@
   "author": "Sai Nageswar S",
   "license": "ISC",
   "dependencies": {
+    "google-protobuf": "^3.17.0-rc.1",
     "grpc-web": "^1.2.1"
   }
 }
