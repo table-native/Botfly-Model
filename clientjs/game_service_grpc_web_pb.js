@@ -230,5 +230,85 @@ proto.botfly.GameServicePromiseClient.prototype.saveMyBot =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.botfly.EmptyRequest,
+ *   !proto.botfly.BotTemplate>}
+ */
+const methodDescriptor_GameService_GetMyBot = new grpc.web.MethodDescriptor(
+  '/botfly.GameService/GetMyBot',
+  grpc.web.MethodType.UNARY,
+  proto.botfly.EmptyRequest,
+  proto.botfly.BotTemplate,
+  /**
+   * @param {!proto.botfly.EmptyRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.botfly.BotTemplate.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.botfly.EmptyRequest,
+ *   !proto.botfly.BotTemplate>}
+ */
+const methodInfo_GameService_GetMyBot = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.botfly.BotTemplate,
+  /**
+   * @param {!proto.botfly.EmptyRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.botfly.BotTemplate.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.botfly.EmptyRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.botfly.BotTemplate)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.botfly.BotTemplate>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.botfly.GameServiceClient.prototype.getMyBot =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/botfly.GameService/GetMyBot',
+      request,
+      metadata || {},
+      methodDescriptor_GameService_GetMyBot,
+      callback);
+};
+
+
+/**
+ * @param {!proto.botfly.EmptyRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.botfly.BotTemplate>}
+ *     Promise that resolves to the response
+ */
+proto.botfly.GameServicePromiseClient.prototype.getMyBot =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/botfly.GameService/GetMyBot',
+      request,
+      metadata || {},
+      methodDescriptor_GameService_GetMyBot);
+};
+
+
 module.exports = proto.botfly;
 
