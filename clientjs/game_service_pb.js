@@ -12,9 +12,9 @@ var goog = jspb;
 var global = Function('return this')();
 
 goog.exportSymbol('proto.botfly.BotTemplate', null, global);
-goog.exportSymbol('proto.botfly.EmptyRequest', null, global);
 goog.exportSymbol('proto.botfly.GameDetails', null, global);
-goog.exportSymbol('proto.botfly.GameDetails.GameType', null, global);
+goog.exportSymbol('proto.botfly.GameType', null, global);
+goog.exportSymbol('proto.botfly.MatchResult', null, global);
 goog.exportSymbol('proto.botfly.SaveStatus', null, global);
 
 /**
@@ -101,7 +101,7 @@ proto.botfly.GameDetails.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.botfly.GameDetails.GameType} */ (reader.readEnum());
+      var value = /** @type {!proto.botfly.GameType} */ (reader.readEnum());
       msg.setGametype(value);
       break;
     default:
@@ -144,22 +144,15 @@ proto.botfly.GameDetails.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * @enum {number}
- */
-proto.botfly.GameDetails.GameType = {
-  TIC_TAC_TOE: 0
-};
-
-/**
  * optional GameType gameType = 1;
- * @return {!proto.botfly.GameDetails.GameType}
+ * @return {!proto.botfly.GameType}
  */
 proto.botfly.GameDetails.prototype.getGametype = function() {
-  return /** @type {!proto.botfly.GameDetails.GameType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.botfly.GameType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
-/** @param {!proto.botfly.GameDetails.GameType} value */
+/** @param {!proto.botfly.GameType} value */
 proto.botfly.GameDetails.prototype.setGametype = function(value) {
   jspb.Message.setProto3EnumField(this, 1, value);
 };
@@ -212,7 +205,8 @@ proto.botfly.BotTemplate.prototype.toObject = function(opt_includeInstance) {
  */
 proto.botfly.BotTemplate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    template: jspb.Message.getFieldWithDefault(msg, 1, "")
+    template: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    gametype: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -253,6 +247,10 @@ proto.botfly.BotTemplate.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setTemplate(value);
       break;
+    case 2:
+      var value = /** @type {!proto.botfly.GameType} */ (reader.readEnum());
+      msg.setGametype(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -289,6 +287,13 @@ proto.botfly.BotTemplate.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getGametype();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -304,6 +309,21 @@ proto.botfly.BotTemplate.prototype.getTemplate = function() {
 /** @param {string} value */
 proto.botfly.BotTemplate.prototype.setTemplate = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional GameType gameType = 2;
+ * @return {!proto.botfly.GameType}
+ */
+proto.botfly.BotTemplate.prototype.getGametype = function() {
+  return /** @type {!proto.botfly.GameType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {!proto.botfly.GameType} value */
+proto.botfly.BotTemplate.prototype.setGametype = function(value) {
+  jspb.Message.setProto3EnumField(this, 2, value);
 };
 
 
@@ -460,12 +480,12 @@ proto.botfly.SaveStatus.prototype.setStatus = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.botfly.EmptyRequest = function(opt_data) {
+proto.botfly.MatchResult = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.botfly.EmptyRequest, jspb.Message);
+goog.inherits(proto.botfly.MatchResult, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.botfly.EmptyRequest.displayName = 'proto.botfly.EmptyRequest';
+  proto.botfly.MatchResult.displayName = 'proto.botfly.MatchResult';
 }
 
 
@@ -480,8 +500,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.botfly.EmptyRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.botfly.EmptyRequest.toObject(opt_includeInstance, this);
+proto.botfly.MatchResult.prototype.toObject = function(opt_includeInstance) {
+  return proto.botfly.MatchResult.toObject(opt_includeInstance, this);
 };
 
 
@@ -490,11 +510,11 @@ proto.botfly.EmptyRequest.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.botfly.EmptyRequest} msg The msg instance to transform.
+ * @param {!proto.botfly.MatchResult} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.botfly.EmptyRequest.toObject = function(includeInstance, msg) {
+proto.botfly.MatchResult.toObject = function(includeInstance, msg) {
   var f, obj = {
 
   };
@@ -510,23 +530,23 @@ proto.botfly.EmptyRequest.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.botfly.EmptyRequest}
+ * @return {!proto.botfly.MatchResult}
  */
-proto.botfly.EmptyRequest.deserializeBinary = function(bytes) {
+proto.botfly.MatchResult.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.botfly.EmptyRequest;
-  return proto.botfly.EmptyRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.botfly.MatchResult;
+  return proto.botfly.MatchResult.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.botfly.EmptyRequest} msg The message object to deserialize into.
+ * @param {!proto.botfly.MatchResult} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.botfly.EmptyRequest}
+ * @return {!proto.botfly.MatchResult}
  */
-proto.botfly.EmptyRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.botfly.MatchResult.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -546,9 +566,9 @@ proto.botfly.EmptyRequest.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.botfly.EmptyRequest.prototype.serializeBinary = function() {
+proto.botfly.MatchResult.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.botfly.EmptyRequest.serializeBinaryToWriter(this, writer);
+  proto.botfly.MatchResult.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -556,13 +576,20 @@ proto.botfly.EmptyRequest.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.botfly.EmptyRequest} message
+ * @param {!proto.botfly.MatchResult} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.botfly.EmptyRequest.serializeBinaryToWriter = function(message, writer) {
+proto.botfly.MatchResult.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.botfly.GameType = {
+  TIC_TAC_TOE: 0
+};
 
 goog.object.extend(exports, proto.botfly);

@@ -73,86 +73,6 @@ proto.botfly.GameServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.botfly.GameDetails,
- *   !proto.botfly.BotTemplate>}
- */
-const methodDescriptor_GameService_GetBotTemplate = new grpc.web.MethodDescriptor(
-  '/botfly.GameService/GetBotTemplate',
-  grpc.web.MethodType.UNARY,
-  proto.botfly.GameDetails,
-  proto.botfly.BotTemplate,
-  /**
-   * @param {!proto.botfly.GameDetails} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.botfly.BotTemplate.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.botfly.GameDetails,
- *   !proto.botfly.BotTemplate>}
- */
-const methodInfo_GameService_GetBotTemplate = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.botfly.BotTemplate,
-  /**
-   * @param {!proto.botfly.GameDetails} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.botfly.BotTemplate.deserializeBinary
-);
-
-
-/**
- * @param {!proto.botfly.GameDetails} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.botfly.BotTemplate)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.botfly.BotTemplate>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.botfly.GameServiceClient.prototype.getBotTemplate =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/botfly.GameService/GetBotTemplate',
-      request,
-      metadata || {},
-      methodDescriptor_GameService_GetBotTemplate,
-      callback);
-};
-
-
-/**
- * @param {!proto.botfly.GameDetails} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.botfly.BotTemplate>}
- *     Promise that resolves to the response
- */
-proto.botfly.GameServicePromiseClient.prototype.getBotTemplate =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/botfly.GameService/GetBotTemplate',
-      request,
-      metadata || {},
-      methodDescriptor_GameService_GetBotTemplate);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
  *   !proto.botfly.BotTemplate,
  *   !proto.botfly.SaveStatus>}
  */
@@ -233,16 +153,16 @@ proto.botfly.GameServicePromiseClient.prototype.saveMyBot =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.botfly.EmptyRequest,
+ *   !proto.botfly.GameDetails,
  *   !proto.botfly.BotTemplate>}
  */
 const methodDescriptor_GameService_GetMyBot = new grpc.web.MethodDescriptor(
   '/botfly.GameService/GetMyBot',
   grpc.web.MethodType.UNARY,
-  proto.botfly.EmptyRequest,
+  proto.botfly.GameDetails,
   proto.botfly.BotTemplate,
   /**
-   * @param {!proto.botfly.EmptyRequest} request
+   * @param {!proto.botfly.GameDetails} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -255,13 +175,13 @@ const methodDescriptor_GameService_GetMyBot = new grpc.web.MethodDescriptor(
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.botfly.EmptyRequest,
+ *   !proto.botfly.GameDetails,
  *   !proto.botfly.BotTemplate>}
  */
 const methodInfo_GameService_GetMyBot = new grpc.web.AbstractClientBase.MethodInfo(
   proto.botfly.BotTemplate,
   /**
-   * @param {!proto.botfly.EmptyRequest} request
+   * @param {!proto.botfly.GameDetails} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -272,7 +192,7 @@ const methodInfo_GameService_GetMyBot = new grpc.web.AbstractClientBase.MethodIn
 
 
 /**
- * @param {!proto.botfly.EmptyRequest} request The
+ * @param {!proto.botfly.GameDetails} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -293,7 +213,7 @@ proto.botfly.GameServiceClient.prototype.getMyBot =
 
 
 /**
- * @param {!proto.botfly.EmptyRequest} request The
+ * @param {!proto.botfly.GameDetails} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -307,6 +227,86 @@ proto.botfly.GameServicePromiseClient.prototype.getMyBot =
       request,
       metadata || {},
       methodDescriptor_GameService_GetMyBot);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.botfly.GameDetails,
+ *   !proto.botfly.MatchResult>}
+ */
+const methodDescriptor_GameService_Play = new grpc.web.MethodDescriptor(
+  '/botfly.GameService/Play',
+  grpc.web.MethodType.UNARY,
+  proto.botfly.GameDetails,
+  proto.botfly.MatchResult,
+  /**
+   * @param {!proto.botfly.GameDetails} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.botfly.MatchResult.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.botfly.GameDetails,
+ *   !proto.botfly.MatchResult>}
+ */
+const methodInfo_GameService_Play = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.botfly.MatchResult,
+  /**
+   * @param {!proto.botfly.GameDetails} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.botfly.MatchResult.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.botfly.GameDetails} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.botfly.MatchResult)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.botfly.MatchResult>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.botfly.GameServiceClient.prototype.play =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/botfly.GameService/Play',
+      request,
+      metadata || {},
+      methodDescriptor_GameService_Play,
+      callback);
+};
+
+
+/**
+ * @param {!proto.botfly.GameDetails} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.botfly.MatchResult>}
+ *     Promise that resolves to the response
+ */
+proto.botfly.GameServicePromiseClient.prototype.play =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/botfly.GameService/Play',
+      request,
+      metadata || {},
+      methodDescriptor_GameService_Play);
 };
 
 

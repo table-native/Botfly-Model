@@ -5,24 +5,28 @@ option go_package = "github.com/table-native/Botfly-Service/generated";
 package botfly;
 
 service GameService {
-    rpc GetBotTemplate(GameDetails) returns (BotTemplate) {}
     rpc SaveMyBot(BotTemplate) returns (SaveStatus) {}
-    rpc GetMyBot(EmptyRequest) returns (BotTemplate) {}
+    rpc GetMyBot(GameDetails) returns (BotTemplate) {}
+    rpc Play(GameDetails) returns (MatchResult) {}
+}
+
+enum GameType {
+    TIC_TAC_TOE = 0;
 }
 
 message GameDetails {
-    enum GameType {
-        TIC_TAC_TOE = 0;
-    }
     GameType gameType = 1;
 }
 
 message BotTemplate {
     string template = 1;
+    GameType gameType = 2;
 }
 
 message SaveStatus {
     string status = 1;
 }
 
-message EmptyRequest {}
+message MatchResult {
+
+}
